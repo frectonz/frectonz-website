@@ -1,0 +1,196 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { FaTwitter, FaGithub, FaLinkedin, FaTelegram } from "react-icons/fa";
+import {
+  SiTypescript,
+  SiJavascript,
+  SiPython,
+  SiRust,
+  SiElm,
+  SiGo,
+  SiOcaml,
+} from "react-icons/si";
+
+const socials = [
+  {
+    name: "Twitter",
+    link: "https://twitter.com/frectonz",
+    icon: FaTwitter,
+  },
+  {
+    name: "Github",
+    link: "https://github.com/frectonz",
+    icon: FaGithub,
+  },
+  {
+    name: "Linkedin",
+    link: "https://linkedin.com/in/fraol-lemecha",
+    icon: FaLinkedin,
+  },
+  {
+    name: "Telegram",
+    link: "https://telegram.com/thefrectonz",
+    icon: FaTelegram,
+  },
+];
+
+const languages = [
+  {
+    name: "Rust",
+    link: "https://github.com/frectonz?tab=repositories&q=&type=&language=rust",
+    icon: SiRust,
+  },
+  {
+    name: "Elm",
+    link: "https://github.com/frectonz?tab=repositories&q=&type=&language=elm",
+    icon: SiElm,
+  },
+  {
+    name: "TypeScript",
+    link: "https://github.com/frectonz?tab=repositories&q=&type=&language=typescript",
+    icon: SiTypescript,
+  },
+  {
+    name: "JavaScript",
+    link: "https://github.com/frectonz?tab=repositories&q=&type=&language=javascript",
+    icon: SiJavascript,
+  },
+  {
+    name: "Python",
+    link: "https://github.com/frectonz?tab=repositories&q=&type=&language=python",
+    icon: SiPython,
+  },
+  {
+    name: "Go",
+    link: "https://github.com/frectonz?tab=repositories&q=&type=&language=go",
+    icon: SiGo,
+  },
+  {
+    name: "OCaml",
+    link: "https://github.com/frectonz?tab=repositories&q=&type=&language=ocaml",
+    icon: SiOcaml,
+  },
+];
+
+const projects = [
+  {
+    name: "Telegram Export Analyzer",
+    image: "/projects/telegram-export-analyzer.png",
+    description:
+      "An analysis tool that shows you different analytics from data exported from telegram groups.",
+  },
+  {
+    name: "Gundan",
+    image: "/projects/gundan.png",
+    description: "A boid simulation program.",
+  },
+  {
+    name: "MiniTab",
+    image: "/projects/minitab.png",
+    description:
+      "A beautiful website that shows the time and a random image from unsplash that you can use as a new tab page.",
+  },
+  {
+    name: "Telegram Export Analyzer",
+    image: "/projects/telegram-export-analyzer.png",
+    description:
+      "An analysis tool that shows you different analytics from data exported from telegram groups.",
+  },
+  {
+    name: "Gundan",
+    image: "/projects/gundan.png",
+    description: "A boid simulation program.",
+  },
+  {
+    name: "MiniTab",
+    image: "/projects/minitab.png",
+    description:
+      "A beautiful website that shows the time and a random image from unsplash that you can use as a new tab page.",
+  },
+];
+---
+
+<Layout title="Frectonz">
+  <header class="mx-20 my-10 grid intro-about-grid gap-10 h-96">
+    <div class="h-full grid intro-social-grid box-shadow">
+      <section class="p-4 border-x border-t border-black">
+        <h1 class="text-4xl">
+          HI, I'm
+          <span class="font-serif font-bold">fraol</span> or
+          <br />
+          <span class="font-serif font-bold">frectonz</span> on the internet.
+        </h1>
+      </section>
+      <section class="p-4 border border-black flex gap-5 items-center">
+        {
+          socials.map((social) => (
+            <a href={social.link} class="hover:scale-110">
+              <social.icon size="2rem" />
+            </a>
+          ))
+        }
+      </section>
+    </div>
+    <section class="p-4 border border-black box-shadow bg-black text-white">
+      <h1 class="text-3xl font-bold pb-4">About Me</h1>
+      <p class="text-xl">
+        I have been interested in technology and its ability to influence our
+        life for as long as I remember. This interest has lead into the world of
+        software development which I enjoy very much
+      </p>
+    </section>
+  </header>
+
+  <article class="mx-20">
+    <h1 class="font-serif text-3xl mb-4">Programming Languages I work with</h1>
+    <div class="flex gap-2">
+      {
+        languages.map((lang) => (
+          <a
+            href={lang.link}
+            title={lang.name}
+            class="hover:scale-110"
+            target="_blank"
+          >
+            <lang.icon size="2rem" />
+          </a>
+        ))
+      }
+    </div>
+  </article>
+
+  <main class="mx-20 my-10">
+    <h1 class="text-4xl font-serif mb-5 font-bold">Projects</h1>
+    <section class="py-5 flex gap-5 overflow-x-auto">
+      {
+        projects.map((project) => (
+          <article class="min-w-[500px] border border-black box-shadow">
+            <picture>
+              <img src={project.image} class="h-80 mx-auto" />
+            </picture>
+            <header class="p-4 border-y border-black">
+              <h1 class="font-serif text-xl font-bold">{project.name}</h1>
+            </header>
+            <main class="p-4">
+              <p>{project.description}</p>
+            </main>
+          </article>
+        ))
+      }
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .box-shadow {
+    box-shadow: 5px 5px hsla(0, 0%, 0%, 0.5);
+  }
+
+  .intro-social-grid {
+    grid-template-rows: 80% 20%;
+  }
+
+  .intro-about-grid {
+    grid-template-columns: 70% 30%;
+  }
+</style>
