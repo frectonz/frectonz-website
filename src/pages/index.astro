@@ -116,7 +116,7 @@ const projects = [
 ---
 
 <Layout title="Frectonz">
-  <header class="mx-20 my-10 grid intro-about-grid gap-10 h-96">
+  <header class="my-10 grid intro-about-grid gap-5 min-h-96">
     <div class="h-full grid intro-social-grid box-shadow">
       <section class="p-4 border-x border-t border-black">
         <h1 class="text-4xl">
@@ -136,6 +136,7 @@ const projects = [
         }
       </section>
     </div>
+
     <section class="p-4 border border-black box-shadow bg-black text-white">
       <h1 class="text-3xl font-bold pb-4">About Me</h1>
       <p class="text-xl">
@@ -146,7 +147,7 @@ const projects = [
     </section>
   </header>
 
-  <article class="mx-20">
+  <article>
     <h1 class="font-serif text-3xl mb-4">Programming Languages I work with</h1>
     <div class="flex gap-2">
       {
@@ -164,14 +165,17 @@ const projects = [
     </div>
   </article>
 
-  <main class="mx-20 my-10">
+  <main class="my-10">
     <h1 class="text-4xl font-serif mb-5 font-bold">Projects</h1>
     <section class="py-5 flex gap-5 overflow-x-auto">
       {
         projects.map((project) => (
-          <article class="min-w-[500px] border border-black box-shadow">
+          <article class="min-w-[400px] border border-black box-shadow">
             <picture>
-              <img src={project.image} class="h-80 mx-auto" />
+              <img
+                src={project.image}
+                class="h-80 mx-auto object-contain p-4"
+              />
             </picture>
             <header class="p-4 border-y border-black">
               <h1 class="font-serif text-xl font-bold">{project.name}</h1>
@@ -196,6 +200,15 @@ const projects = [
   }
 
   .intro-about-grid {
-    grid-template-columns: 70% 30%;
+    grid-template-columns: 60% 40%;
+  }
+
+  @media (max-width: 900px) {
+    .intro-social-grid {
+      grid-template-rows: auto auto;
+    }
+    .intro-about-grid {
+      grid-template-columns: 100%;
+    }
   }
 </style>
