@@ -118,10 +118,12 @@ const projects = [
 <Layout title="Frectonz">
   <header class="my-10 grid intro-about-grid gap-5 min-h-96">
     <div class="min-h-[300px] border border-black flex flex-col box-shadow">
-      <section class="p-4 flex-grow flex gap-4 items-center">
-        <img src="me.png" class="w-28 h-28 rounded-full border border-black" />
+      <section
+        class="p-4 flex-grow flex flex-col sm:flex-row gap-4 items-start justify-start"
+      >
+        <img src="me.jpg" class="w-28 h-28 rounded-full border border-black" />
         <h1 class="text-4xl">
-          HI, I'm
+          Hi, I'm
           <span class="font-serif font-bold">fraol</span> or
           <br />
           <span class="font-serif font-bold">frectonz</span> on the internet.
@@ -152,7 +154,7 @@ const projects = [
 
   <article>
     <h1 class="font-serif text-3xl mb-4">Programming Languages I work with</h1>
-    <div class="flex gap-2">
+    <div class="flex gap-2 flex-wrap">
       {
         languages.map((lang) => (
           <a
