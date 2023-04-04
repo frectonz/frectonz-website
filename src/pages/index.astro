@@ -81,36 +81,33 @@ const projects = [
   {
     name: "Telegram Export Analyzer",
     image: "/projects/telegram-export-analyzer.png",
+    code: "https://github.com/frectonz/telegram-export-analyzer",
+    url: "https://telegram-export-analyzer.netlify.app/",
     description:
       "An analysis tool that shows you different analytics from data exported from telegram groups.",
   },
   {
     name: "Gundan",
     image: "/projects/gundan.png",
+    code: "https://github.com/frectonz/gundan",
+    url: "https://gundan.netlify.app/",
     description: "A boid simulation program.",
   },
   {
     name: "MiniTab",
     image: "/projects/minitab.png",
+    code: "https://github.com/frectonz/minitab",
+    url: "https://mini-tab.netlify.app/",
     description:
       "A beautiful website that shows the time and a random image from unsplash that you can use as a new tab page.",
   },
   {
-    name: "Telegram Export Analyzer",
-    image: "/projects/telegram-export-analyzer.png",
+    name: "Birr Forex Bot",
+    image: "/projects/birr-forex-bot.png",
+    code: "https://github.com/frectonz/birr-forex-bot",
+    url: "https://t.me/birr_forex_bot",
     description:
-      "An analysis tool that shows you different analytics from data exported from telegram groups.",
-  },
-  {
-    name: "Gundan",
-    image: "/projects/gundan.png",
-    description: "A boid simulation program.",
-  },
-  {
-    name: "MiniTab",
-    image: "/projects/minitab.png",
-    description:
-      "A beautiful website that shows the time and a random image from unsplash that you can use as a new tab page.",
+      "A telegram bot that sends the current day's foreign exchange rates to its subscribers.",
   },
 ];
 ---
@@ -175,7 +172,7 @@ const projects = [
     <section class="py-5 flex gap-5 overflow-x-auto">
       {
         projects.map((project) => (
-          <article class="min-w-[400px] border border-black box-shadow">
+          <article class="min-w-[400px] w-[400px] border border-black box-shadow flex flex-col">
             <picture>
               <img
                 src={project.image}
@@ -185,9 +182,17 @@ const projects = [
             <header class="p-4 border-y border-black">
               <h1 class="font-serif text-xl font-bold">{project.name}</h1>
             </header>
-            <main class="p-4">
+            <main class="p-4 flex-grow">
               <p>{project.description}</p>
             </main>
+            <footer class="px-4 pb-4 flex gap-2 justify-end">
+              <a href={project.code} class="underline">
+                Source
+              </a>
+              <a href={project.url} class="underline">
+                View Project
+              </a>
+            </footer>
           </article>
         ))
       }
