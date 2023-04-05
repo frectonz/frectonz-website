@@ -1,5 +1,10 @@
 const tags = {
-  elm: "Elm", rust: "Rust", frontend: "Frontend", typescript: "TypeScript", telegram: "Telegram", animation: "Animation"
+  elm: "Elm",
+  rust: "Rust",
+  frontend: "Frontend",
+  typescript: "TypeScript",
+  telegram: "Telegram",
+  animation: "Animation",
 };
 
 const projects = [
@@ -46,13 +51,16 @@ const projects = [
     description: "A tic tac toe game implemented in Elm.",
     tags: [tags["elm"], tags["frontend"]],
   },
-]
+];
 
 export default function Projects() {
-  return (<section className="py-5 flex gap-5 overflow-x-auto">
-    {
-      projects.map((project) => (
-        <article className="min-w-[400px] w-[400px] border border-black box-shadow flex flex-col">
+  return (
+    <section className="py-5 flex gap-5 overflow-x-auto">
+      {projects.map((project, i) => (
+        <article
+          key={i}
+          className="min-w-[400px] w-[400px] border border-black box-shadow flex flex-col"
+        >
           <picture>
             <img
               src={project.image}
@@ -60,8 +68,13 @@ export default function Projects() {
             />
           </picture>
           <div className="p-4 flex gap-2">
-            {project.tags.map((tag) => (
-              <button className="border border-black px-1 hover:bg-black hover:text-white">{tag}</button>
+            {project.tags.map((tag, i) => (
+              <button
+                key={i}
+                className="border border-black px-1 hover:bg-black hover:text-white"
+              >
+                {tag}
+              </button>
             ))}
           </div>
           <header className="p-4 border-y border-black">
@@ -79,7 +92,7 @@ export default function Projects() {
             </a>
           </footer>
         </article>
-      ))
-    }
-  </section>);
+      ))}
+    </section>
+  );
 }
