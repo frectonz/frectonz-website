@@ -8,34 +8,17 @@ const tags = {
   typescript: "TypeScript",
   telegram: "Telegram",
   animation: "Animation",
+  terminal: "Terminal",
 };
 
 const projects = [
   {
-    name: "Telegram Export Analyzer",
-    image: "/projects/telegram-export-analyzer.png",
-    code: "https://github.com/frectonz/telegram-export-analyzer",
-    url: "https://telegram-export-analyzer.netlify.app/",
-    description:
-      "An analysis tool that shows you different analytics from data exported from telegram groups.",
-    tags: [tags["typescript"], tags["telegram"], tags["frontend"]],
-  },
-  {
-    name: "Gundan",
-    image: "/projects/gundan.png",
-    code: "https://github.com/frectonz/gundan",
-    url: "https://gundan.netlify.app/",
-    description: "A boid simulation program.",
-    tags: [tags["typescript"], tags["animation"]],
-  },
-  {
-    name: "MiniTab",
-    image: "/projects/minitab.png",
-    code: "https://github.com/frectonz/minitab",
-    url: "https://mini-tab.netlify.app/",
-    description:
-      "A beautiful website that shows the time and a random image from unsplash that you can use as a new tab page.",
-    tags: [tags["elm"], tags["frontend"]],
+    name: "Mekuteriya",
+    image: "/projects/mekuteriya.png",
+    code: "https://github.com/frectonz/mek-ut-er-ya",
+    url: "https://asciinema.org/a/539058",
+    description: "A simple program for handling Ethiopian calendar dates.",
+    tags: [tags["rust"], tags["terminal"]],
   },
   {
     name: "Birr Forex Bot",
@@ -47,12 +30,56 @@ const projects = [
     tags: [tags["typescript"], tags["telegram"]],
   },
   {
+    name: "Snake Game",
+    image: "/projects/snake.png",
+    code: "https://github.com/frectonz/snake",
+    url: "https://youtu.be/RHeQA1ISvE0",
+    description: "A snake game implemented in Rust.",
+    tags: [tags["rust"], tags["terminal"]],
+  },
+  {
+    name: "Telegram Export Analyzer",
+    image: "/projects/telegram-export-analyzer.png",
+    code: "https://github.com/frectonz/telegram-export-analyzer",
+    url: "https://telegram-export-analyzer.netlify.app/",
+    description:
+      "An analysis tool that shows you different analytics from data exported from telegram groups.",
+    tags: [tags["typescript"], tags["telegram"], tags["frontend"]],
+  },
+  {
+    name: "Wordle in Elm",
+    image: "/projects/wordle-elm.png",
+    code: "https://github.com/frectonz/wordle-elm",
+    url: "https://wordle-elm.netlify.app/",
+    description: "A wordle clone implemented in Elm.",
+    tags: [tags["elm"], tags["frontend"]],
+  },
+
+  {
+    name: "MiniTab",
+    image: "/projects/minitab.png",
+    code: "https://github.com/frectonz/minitab",
+    url: "https://mini-tab.netlify.app/",
+    description:
+      "A beautiful website that shows the time and a random image from unsplash that you can use as a new tab page.",
+    tags: [tags["elm"], tags["frontend"]],
+  },
+
+  {
     name: "OXO",
     image: "/projects/oxo.png",
     code: "https://github.com/frectonz/oxo",
     url: "https://play-oxo.netlify.app/",
     description: "A tic tac toe game implemented in Elm.",
     tags: [tags["elm"], tags["frontend"]],
+  },
+  {
+    name: "Gundan",
+    image: "/projects/gundan.png",
+    code: "https://github.com/frectonz/gundan",
+    url: "https://gundan.netlify.app/",
+    description: "A boid simulation program.",
+    tags: [tags["typescript"], tags["animation"]],
   },
 ];
 
@@ -70,23 +97,21 @@ export default function Projects() {
   };
 
   return (
-    <>
-      <div>
-        <div className="flex flex-wrap gap-2 items-center">
-          {selectedTags.length !== 0 && (
-            <span className="mr-2">Showing Projects with</span>
-          )}
-          {selectedTags.map((tag, i) => (
-            <button
-              key={i}
-              onClick={() => removeTag(tag)}
-              className="border border-black px-1 p-0.5 flex gap-1 items-center"
-            >
-              <span>{tag}</span>
-              <RxCross2 className="ml-1 inline-block bg-black text-white" />
-            </button>
-          ))}
-        </div>
+    <main className="mb-5">
+      <div className="flex flex-wrap gap-2 items-center">
+        {selectedTags.length !== 0 && (
+          <span className="mr-2">Showing Projects with</span>
+        )}
+        {selectedTags.map((tag, i) => (
+          <button
+            key={i}
+            onClick={() => removeTag(tag)}
+            className="border border-black px-1 p-0.5 flex gap-1 items-center"
+          >
+            <span>{tag}</span>
+            <RxCross2 className="ml-1 inline-block bg-black text-white" />
+          </button>
+        ))}
       </div>
       <section className="py-5 flex gap-5 overflow-x-auto">
         {projects
@@ -134,6 +159,6 @@ export default function Projects() {
             </article>
           ))}
       </section>
-    </>
+    </main>
   );
 }
