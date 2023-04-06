@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { RxCross2 } from "react-icons/rx/index";
+
 const tags = {
   elm: "Elm",
   rust: "Rust",
@@ -54,45 +57,83 @@ const projects = [
 ];
 
 export default function Projects() {
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+
+  const addTag = (tag: string) => {
+    if (!selectedTags.includes(tag)) {
+      setSelectedTags([...selectedTags, tag]);
+    }
+  };
+
+  const removeTag = (tag: string) => {
+    setSelectedTags(selectedTags.filter((t) => t !== tag));
+  };
+
   return (
-    <section className="py-5 flex gap-5 overflow-x-auto">
-      {projects.map((project, i) => (
-        <article
-          key={i}
-          className="min-w-[400px] w-[400px] border border-black box-shadow flex flex-col"
-        >
-          <picture>
-            <img
-              src={project.image}
-              className="h-80 mx-auto object-contain p-1"
-            />
-          </picture>
-          <div className="p-4 flex gap-2">
-            {project.tags.map((tag, i) => (
-              <button
-                key={i}
-                className="border border-black px-1 hover:bg-black hover:text-white"
-              >
-                {tag}
-              </button>
-            ))}
-          </div>
-          <header className="p-4 border-y border-black">
-            <h1 className="font-serif text-xl font-bold">{project.name}</h1>
-          </header>
-          <main className="p-4 flex-grow">
-            <p>{project.description}</p>
-          </main>
-          <footer className="px-4 pb-4 flex gap-2 justify-end">
-            <a href={project.code} className="underline">
-              Source
-            </a>
-            <a href={project.url} className="underline">
-              View Project
-            </a>
-          </footer>
-        </article>
-      ))}
-    </section>
+    <>
+      <div>
+        <div className="flex flex-wrap gap-2 items-center">
+          {selectedTags.length !== 0 && (
+            <span className="mr-2">Showing Projects with</span>
+          )}
+          {selectedTags.map((tag, i) => (
+            <button
+              key={i}
+              onClick={() => removeTag(tag)}
+              className="border border-black px-1 p-0.5 flex gap-1 items-center"
+            >
+              <span>{tag}</span>
+              <RxCross2 className="ml-1 inline-block bg-black text-white" />
+            </button>
+          ))}
+        </div>
+      </div>
+      <section className="py-5 flex gap-5 overflow-x-auto">
+        {projects
+          .filter(
+            (project) =>
+              selectedTags.length === 0 ||
+              selectedTags.every((tag) => project.tags.includes(tag))
+          )
+          .map((project, i) => (
+            <article
+              key={i}
+              className="min-w-[400px] w-[400px] border border-black box-shadow flex flex-col"
+            >
+              <picture>
+                <img
+                  src={project.image}
+                  className="h-80 mx-auto object-contain p-1"
+                />
+              </picture>
+              <div className="p-4 flex gap-2">
+                {project.tags.map((tag, i) => (
+                  <button
+                    key={i}
+                    className="border border-black px-1 hover:bg-black hover:text-white"
+                    onClick={() => addTag(tag)}
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </div>
+              <header className="p-4 border-y border-black">
+                <h1 className="font-serif text-xl font-bold">{project.name}</h1>
+              </header>
+              <main className="p-4 flex-grow">
+                <p>{project.description}</p>
+              </main>
+              <footer className="px-4 pb-4 flex gap-2 justify-end">
+                <a href={project.code} className="underline">
+                  Source
+                </a>
+                <a href={project.url} className="underline">
+                  View Project
+                </a>
+              </footer>
+            </article>
+          ))}
+      </section>
+    </>
   );
 }
