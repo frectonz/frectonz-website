@@ -78,6 +78,24 @@ const languages = [
     icon: SiOcaml,
   },
 ];
+
+const essays = [
+  {
+    name: "The Glory of Determinism",
+    slug: "the-glory-of-determinism",
+    publishedOn: "2023-04-06",
+  },
+  {
+    name: "Are Equbs bad?",
+    slug: "are-equbs-bad",
+    publishedOn: "coming soon",
+  },
+  {
+    name: "Sleep is the Enemy",
+    slug: "sleep-is-the-enemy",
+    publishedOn: "coming soon",
+  },
+];
 ---
 
 <Layout title="Frectonz">
@@ -135,10 +153,33 @@ const languages = [
     </div>
   </article>
 
-  <main class="my-10">
+  <section class="my-10">
     <h1 class="text-4xl font-serif mb-5 font-bold">Projects</h1>
     <Projects client:load />
-  </main>
+  </section>
+
+  <section class="my-10">
+    <h1 class="text-4xl font-serif mb-5 font-bold">Essays</h1>
+    <main>
+      <ul class="grid grid-cols-1 gap-3">
+        {
+          essays.map((essay) => (
+            <li class="border border-black box-shadow">
+              <a
+                href={`/essays/${essay.slug}`}
+                class="flex justify-between transition-colors hover:bg-black hover:text-white"
+              >
+                <h1 class="p-2">{essay.name}</h1>
+                <p class="border-l border-black p-2 font-serif">
+                  {essay.publishedOn}
+                </p>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </main>
+  </section>
 </Layout>
 
 <style>
