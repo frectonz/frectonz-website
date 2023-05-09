@@ -14,7 +14,6 @@ const tags = {
 const projects = [
   {
     name: "Mekuteriya",
-    image: "/projects/mekuteriya.png",
     code: "https://github.com/frectonz/mek-ut-er-ya",
     url: "https://asciinema.org/a/539058",
     description: "A simple program for handling Ethiopian calendar dates.",
@@ -22,7 +21,6 @@ const projects = [
   },
   {
     name: "Birr Forex Bot",
-    image: "/projects/birr-forex-bot.png",
     code: "https://github.com/frectonz/birr-forex-bot",
     url: "https://t.me/birr_forex_bot",
     description:
@@ -31,7 +29,6 @@ const projects = [
   },
   {
     name: "Snake Game",
-    image: "/projects/snake.png",
     code: "https://github.com/frectonz/snake",
     url: "https://youtu.be/RHeQA1ISvE0",
     description: "A snake game implemented in Rust.",
@@ -39,7 +36,6 @@ const projects = [
   },
   {
     name: "Telegram Export Analyzer",
-    image: "/projects/telegram-export-analyzer.png",
     code: "https://github.com/frectonz/telegram-export-analyzer",
     url: "https://telegram-export-analyzer.netlify.app/",
     description:
@@ -48,7 +44,6 @@ const projects = [
   },
   {
     name: "Wordle in Elm",
-    image: "/projects/wordle-elm.png",
     code: "https://github.com/frectonz/wordle-elm",
     url: "https://wordle-elm.netlify.app/",
     description: "A wordle clone implemented in Elm.",
@@ -57,7 +52,6 @@ const projects = [
 
   {
     name: "MiniTab",
-    image: "/projects/minitab.png",
     code: "https://github.com/frectonz/minitab",
     url: "https://mini-tab.netlify.app/",
     description:
@@ -67,7 +61,6 @@ const projects = [
 
   {
     name: "OXO",
-    image: "/projects/oxo.png",
     code: "https://github.com/frectonz/oxo",
     url: "https://play-oxo.netlify.app/",
     description: "A tic tac toe game implemented in Elm.",
@@ -75,7 +68,6 @@ const projects = [
   },
   {
     name: "Gundan",
-    image: "/projects/gundan.png",
     code: "https://github.com/frectonz/gundan",
     url: "https://gundan.netlify.app/",
     description: "A boid simulation program.",
@@ -125,13 +117,11 @@ export default function Projects() {
               key={i}
               className="min-w-[400px] w-[400px] border border-black box-shadow flex flex-col"
             >
-              <picture>
-                <img
-                  src={project.image}
-                  className="h-80 mx-auto object-contain p-1"
-                />
-              </picture>
-              <div className="p-4 flex gap-2">
+              <header className="p-4 border-black">
+                <h1 className="font-serif text-xl font-bold">{project.name}</h1>
+              </header>
+
+              <div className="p-4 border-y border-black flex gap-2">
                 {project.tags.map((tag, i) => (
                   <button
                     key={i}
@@ -142,9 +132,7 @@ export default function Projects() {
                   </button>
                 ))}
               </div>
-              <header className="p-4 border-y border-black">
-                <h1 className="font-serif text-xl font-bold">{project.name}</h1>
-              </header>
+
               <main className="p-4 flex-grow">
                 <p>{project.description}</p>
               </main>
