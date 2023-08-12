@@ -1,4 +1,6 @@
 ---
+import "../style.css";
+
 export interface Props {
   title: string;
 }
@@ -22,12 +24,6 @@ const { title } = Astro.props;
   </body>
 </html>
 <style is:global>
-  body {
-    background-image: url(/dots.png);
-    background-position: 0 0;
-    background-size: 30px;
-  }
-
   .box-shadow {
     box-shadow: 5px 5px hsla(0, 0%, 0%, 0.5);
   }
