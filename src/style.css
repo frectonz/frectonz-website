@@ -1,3 +1,7 @@
+* {
+  font-family: "Fira Code", monospace !important;
+}
+
 body {
   background-image: url(/dots.png);
   background-position: 0 0;
