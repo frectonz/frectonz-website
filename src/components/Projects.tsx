@@ -110,7 +110,7 @@ export default function Projects() {
           .filter(
             (project) =>
               selectedTags.length === 0 ||
-              selectedTags.every((tag) => project.tags.includes(tag))
+              selectedTags.every((tag) => project.tags.includes(tag)),
           )
           .map((project, i) => (
             <article

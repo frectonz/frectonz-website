@@ -96,6 +96,14 @@ const essays = [
     publishedOn: "coming soon",
   },
 ];
+
+const stories = [
+  {
+    name: "Teleportation",
+    slug: "teleportation",
+    publishedOn: "2023-08-20",
+  },
+];
 ---
 
 <Layout title="Frectonz">
@@ -185,6 +193,29 @@ const essays = [
                 <h1 class="p-2">{essay.name}</h1>
                 <p class="border-l border-black p-2 font-serif">
                   {essay.publishedOn}
+                </p>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </main>
+  </section>
+
+  <section class="my-10">
+    <h1 class="text-4xl font-serif mb-5 font-bold">Stories</h1>
+    <main>
+      <ul class="grid grid-cols-1 gap-3">
+        {
+          stories.map((story) => (
+            <li class="border border-black box-shadow">
+              <a
+                href={`/stories/${story.slug}`}
+                class="flex justify-between transition-colors hover:bg-black hover:text-white"
+              >
+                <h1 class="p-2">{story.name}</h1>
+                <p class="border-l border-black p-2 font-serif">
+                  {story.publishedOn}
                 </p>
               </a>
             </li>
