@@ -168,14 +168,22 @@ import "../../style.css";
         to. He began to access the properties.
       </p>
 
-       ``` <br />
-      {">"} person.name <br />
-       "Charlie Solton" <br />
-      {">"} person.hairColor <br />
-       "black" <br />
-      {">"} person.iq <br />
-       120 <br />
-       ```
+      <div class="code-block box-shadow">
+        <p>{">"} person.name</p>
+        <p>"Charlie Solton"</p>
+        <p>{">"} person.hairColor</p>
+        <p>"black"</p>
+        <p>{">"} person.iq</p>
+        <p>120</p>
+      </div>
+
+      <style>
+        .code-block {
+          background-color: black;
+          color: white;
+          padding: 1rem;
+        }
+      </style>
 
       <p>
         Charlie now understood what this machine was capable of. Yet, a question
