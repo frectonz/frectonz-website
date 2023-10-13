@@ -1,11 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import {
-  FaGithub,
-  FaTwitter,
-  FaLinkedin,
-  FaTelegram,
-} from "react-icons/fa/index.js";
+import { FaGithub, FaTwitter, FaTelegram } from "react-icons/fa/index.js";
+import { MdOutlineAlternateEmail } from "react-icons/md/index.js";
 import {
   SiGo,
   SiElm,
@@ -31,14 +27,14 @@ const socials = [
     icon: FaGithub,
   },
   {
-    name: "Linkedin",
-    link: "https://linkedin.com/in/fraol-lemecha",
-    icon: FaLinkedin,
-  },
-  {
     name: "Telegram",
     link: "https://telegram.com/thefrectonz",
     icon: FaTelegram,
+  },
+  {
+    name: "Email",
+    link: "mailto:fraol0912@gmail.com",
+    icon: MdOutlineAlternateEmail,
   },
 ];
 
@@ -82,7 +78,7 @@ const languages = [
     name: "Nix",
     link: "https://github.com/frectonz?tab=repositories&language=nix",
     icon: SiNixos,
-  }
+  },
 ];
 
 const essays = [
