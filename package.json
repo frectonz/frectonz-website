@@ -9,7 +9,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier --write . --plugin=prettier-plugin-astro"
+    "format": "prettier --write src --plugin=prettier-plugin-astro"
   },
   "dependencies": {
     "@astrojs/react": "^2.3.2",

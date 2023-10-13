@@ -13,6 +13,13 @@ const tags = {
 
 const projects = [
   {
+    name: "Super Tic-Tac-Toe",
+    code: "https://github.com/frectonz/super-tic-tac-toe",
+    url: "https://tic-tac-toe.frectonz.io/",
+    description: "Super Tic-Tac-Toe implemented in Elm.",
+    tags: [tags["elm"], tags["frontend"]],
+  },
+  {
     name: "Mekuteriya",
     code: "https://github.com/frectonz/mek-ut-er-ya",
     url: "https://asciinema.org/a/539058",
@@ -49,7 +56,6 @@ const projects = [
     description: "A wordle clone implemented in Elm.",
     tags: [tags["elm"], tags["frontend"]],
   },
-
   {
     name: "MiniTab",
     code: "https://github.com/frectonz/minitab",
@@ -58,7 +64,6 @@ const projects = [
       "A beautiful website that shows the time and a random image from unsplash that you can use as a new tab page.",
     tags: [tags["elm"], tags["frontend"]],
   },
-
   {
     name: "OXO",
     code: "https://github.com/frectonz/oxo",
