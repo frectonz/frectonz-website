@@ -44,7 +44,7 @@ const projects = [
   {
     name: "Telegram Export Analyzer",
     code: "https://github.com/frectonz/telegram-export-analyzer",
-    url: "https://telegram-export-analyzer.netlify.app/",
+    url: "https://telegram.frectonz.io/",
     description:
       "An analysis tool that shows you different analytics from data exported from telegram groups.",
     tags: [tags["typescript"], tags["telegram"], tags["frontend"]],
@@ -52,14 +52,14 @@ const projects = [
   {
     name: "Wordle in Elm",
     code: "https://github.com/frectonz/wordle-elm",
-    url: "https://wordle-elm.netlify.app/",
+    url: "https://wordle.frectonz.io/",
     description: "A wordle clone implemented in Elm.",
     tags: [tags["elm"], tags["frontend"]],
   },
   {
     name: "MiniTab",
     code: "https://github.com/frectonz/minitab",
-    url: "https://mini-tab.netlify.app/",
+    url: "https://mini-tab.frectonz.io/",
     description:
       "A beautiful website that shows the time and a random image from unsplash that you can use as a new tab page.",
     tags: [tags["elm"], tags["frontend"]],
@@ -67,14 +67,14 @@ const projects = [
   {
     name: "OXO",
     code: "https://github.com/frectonz/oxo",
-    url: "https://play-oxo.netlify.app/",
+    url: "https://oxo.frectonz.io/",
     description: "A tic tac toe game implemented in Elm.",
     tags: [tags["elm"], tags["frontend"]],
   },
   {
     name: "Gundan",
     code: "https://github.com/frectonz/gundan",
-    url: "https://gundan.netlify.app/",
+    url: "https://boids.frectonz.io/",
     description: "A boid simulation program.",
     tags: [tags["typescript"], tags["animation"]],
   },
