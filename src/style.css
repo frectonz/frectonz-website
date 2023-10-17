@@ -11,3 +11,9 @@ body {
 .box-shadow {
   box-shadow: 5px 5px hsla(0, 0%, 0%, 0.5);
 }
+
+.text-highlight {
+  color: white;
+  background-color: black;
+  padding: 0.5px 2px;
+}
