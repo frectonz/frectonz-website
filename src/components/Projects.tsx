@@ -2,6 +2,10 @@ import { useState } from "react";
 import { RxCross2 } from "react-icons/rx/index";
 
 const tags = {
+  ocaml: "OCaml",
+  terraform: "Terraform",
+  nix: "Nix",
+  ruby: "Ruby",
   elm: "Elm",
   rust: "Rust",
   frontend: "Frontend",
@@ -12,6 +16,50 @@ const tags = {
 };
 
 const projects = [
+  {
+    name: "The Hearts of OpenAi",
+    code: "https://github.com/frectonz/the-hearts-of-openai",
+    url: "https://openai.frectonz.io/",
+    description:
+      "Convert a string into a bunch of heart emojis ❤️🧡💛💚💙💜🖤🤍 OpenAi style.",
+    tags: [tags["elm"], tags["nix"]],
+  },
+  {
+    name: "Webcam Seeder",
+    code: "https://github.com/frectonz/webcam-seeder",
+    description: "Seed a random number generator using a webcam picture.",
+    tags: [tags["rust"], tags["nix"]],
+  },
+  {
+    name: "Prime Portraits",
+    code: "https://github.com/frectonz/prime-portraits",
+    description: "A program that turns images into prime numbers.",
+    tags: [tags["rust"], tags["nix"]],
+  },
+  {
+    name: "Watchbox",
+    code: "https://github.com/frectonz/watchbox",
+    description: "My personal program for watching movies and shows.",
+    tags: [tags["ocaml"], tags["terminal"]],
+  },
+  {
+    name: "Senamirmir Nixified ",
+    code: "https://github.com/frectonz/senamirmir-nixified",
+    description: "Senamirmir fonts packaged as a nix package.",
+    tags: [tags["nix"]],
+  },
+  {
+    name: "Monaspace Nixified ",
+    code: "https://github.com/frectonz/monaspace",
+    description: "Monaspace fonts packaged as a nix package.",
+    tags: [tags["nix"]],
+  },
+  {
+    name: "Tally Tool",
+    code: "https://github.com/frectonz/tally-tool",
+    description: "A ruby on rails app to count stuff.",
+    tags: [tags["ruby"], tags["nix"], tags["terraform"], tags["typescript"]],
+  },
   {
     name: "Super Tic-Tac-Toe",
     code: "https://github.com/frectonz/super-tic-tac-toe",
@@ -145,9 +193,11 @@ export default function Projects() {
                 <a href={project.code} className="underline">
                   Source
                 </a>
-                <a href={project.url} className="underline">
-                  View Project
-                </a>
+                {project.url && (
+                  <a href={project.url} className="underline">
+                    View Project
+                  </a>
+                )}
               </footer>
             </article>
           ))}
