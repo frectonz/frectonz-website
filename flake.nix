@@ -15,9 +15,14 @@
         devShells.default = mkShell {
           packages = [
             nodejs
+            emmet-ls
+            typescript
             nodePackages.pnpm
             nodePackages.typescript
             nodePackages.typescript-language-server
+            nodePackages."@astrojs/language-server"
+            nodePackages.vscode-langservers-extracted
+            nodePackages."@tailwindcss/language-server"
           ];
         };
 
