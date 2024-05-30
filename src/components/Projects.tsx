@@ -3,13 +3,17 @@ import { RxCross2 } from "react-icons/rx/index";
 
 const tags = {
   ocaml: "OCaml",
+  rescript: "ReScript",
   terraform: "Terraform",
   nix: "Nix",
   ruby: "Ruby",
   elm: "Elm",
   rust: "Rust",
+  svelte: "Svelte",
+  deno: "Deno",
   frontend: "Frontend",
   typescript: "TypeScript",
+  javascript: "JavaScript",
   telegram: "Telegram",
   animation: "Animation",
   terminal: "Terminal",
@@ -17,24 +21,79 @@ const tags = {
 
 const projects = [
   {
+    name: "ordo",
+    code: "https://github.com/frectonz/ordo",
+    url: "https://ordo.frectonz.io",
+    description: "Effortlessly set up and conduct ranked choice voting",
+    tags: [tags["rust"], tags["nix"]],
+  },
+  {
+    name: "Act on Press",
+    code: "https://github.com/frectonz/act-on-press",
+    description:
+      "A web extension that let's you trigger click actions on press instead of release.",
+    tags: [tags["javascript"]],
+  },
+  {
+    name: "Elm Dama",
+    code: "https://github.com/frectonz/elm-dama",
+    url: "https://dama.frectonz.io/",
+    description: "Ethiopian dama game implemented in Elm.",
+    tags: [tags["elm"], tags["nix"], tags["frontend"]],
+  },
+  {
+    name: "of_base",
+    code: "https://github.com/frectonz/of-base",
+    url: "https://of-base.frectonz.io",
+    description: "Base conversion app for learning rescript.",
+    tags: [tags["rescript"], tags["nix"], tags["frontend"]],
+  },
+  {
+    name: "CBE Cash Plot",
+    code: "https://github.com/frectonz/cbe_cash_plot",
+    description: "Generate a plot of your CBE balance overtime.",
+    tags: [tags["ocaml"], tags["nix"], tags["terminal"]],
+  },
+  {
+    name: "To Hearts Bot",
+    code: "https://github.com/frectonz/to-hearts-bot",
+    url: "https://t.me/to_hearts_bot",
+    description: "The Hearts of OpenAi Telegram Bot",
+    tags: [tags["typescript"], tags["nix"], tags["deno"], tags["telegram"]],
+  },
+  {
+    name: "e/acc card",
+    code: "https://github.com/frectonz/e-acc-card",
+    url: "https://e-acc.frectonz.io/",
+    description:
+      "A demo for using SVGs as templates to generate images in the browser.",
+    tags: [tags["svelte"], tags["typescript"], tags["nix"], tags["frontend"]],
+  },
+  {
+    name: "cmd-rs",
+    code: "https://github.com/frectonz/cmd-rs",
+    description: "Python's cmd module implemented in Rust via proc-macros",
+    tags: [tags["rust"], tags["nix"]],
+  },
+  {
     name: "The Hearts of OpenAi",
     code: "https://github.com/frectonz/the-hearts-of-openai",
     url: "https://openai.frectonz.io/",
     description:
       "Convert a string into a bunch of heart emojis ❤️🧡💛💚💙💜🖤🤍 OpenAi style.",
-    tags: [tags["elm"], tags["nix"]],
+    tags: [tags["elm"], tags["nix"], tags["frontend"]],
   },
   {
     name: "Webcam Seeder",
     code: "https://github.com/frectonz/webcam-seeder",
     description: "Seed a random number generator using a webcam picture.",
-    tags: [tags["rust"], tags["nix"]],
+    tags: [tags["rust"], tags["nix"], tags["terminal"]],
   },
   {
     name: "Prime Portraits",
     code: "https://github.com/frectonz/prime-portraits",
     description: "A program that turns images into prime numbers.",
-    tags: [tags["rust"], tags["nix"]],
+    tags: [tags["rust"], tags["nix"], tags["terminal"]],
   },
   {
     name: "Watchbox",
@@ -189,7 +248,7 @@ export default function Projects() {
               <main className="p-4 flex-grow">
                 <p>{project.description}</p>
               </main>
-              <footer className="px-4 pb-4 flex gap-2 justify-end">
+              <footer className="px-4 pb-4 flex gap-4 justify-end">
                 <a href={project.code} className="underline">
                   Source
                 </a>
