@@ -117,6 +117,35 @@ const stories = [
     publishedOn: "2023-08-20",
   },
 ];
+
+const oss = [
+  {
+    name: "GQL",
+    description:
+      "Git Query language is a SQL like language to perform queries on .git files with supports of most of SQL features such as grouping, ordering and aggregations functions",
+    prs: "https://github.com/AmrDeveloper/GQL/pulls?q=is%3Apr+author%3Afrectonz",
+  },
+  {
+    name: "cookie-cutter",
+    description: "Cookie cutter modeling built as a demo project for zoo.dev",
+    prs: "https://github.com/KittyCAD/cookie-cutter/pulls?qa=is%3Apr+author%3Afrectonz",
+  },
+  {
+    name: "fend",
+    description: "Arbitrary-precision unit-aware calculator",
+    prs: "https://github.com/printfn/fend/pulls?q=is%3Apr+author%3Afrectonz",
+  },
+  {
+    name: "crates-build-env",
+    description: "Build environment for third-party Rust crates",
+    prs: "https://github.com/rust-lang/crates-build-env/pulls?q=is%3Apr+author%3Afrectonz",
+  },
+  {
+    name: "muc",
+    description: "Visualize your most used commands",
+    prs: "https://github.com/nate-sys/muc/pulls?q=is%3Apr+author%3Afrectonz",
+  },
+];
 ---
 
 <Layout title="Frectonz">
@@ -199,6 +228,33 @@ const stories = [
       href="https://github.com/frectonz?tab=repositories"
       class="font-serif underline text-xl">See more on GitHub</a
     >
+  </section>
+
+  <section class="my-10">
+    <h1 class="text-4xl font-serif mb-5 font-bold">
+      Open-source Contributions
+    </h1>
+    <div class="py-5 flex gap-5 overflow-x-auto">
+      {
+        oss.map((p) => (
+          <div class="min-w-[400px] w-[400px] flex flex-col border border-black box-shadow">
+            <div class="p-4">
+              <h1 class="font-serif text-xl font-bold">{p.name}</h1>
+            </div>
+
+            <div class="p-4 border-t border-black flex-grow">
+              <p class="font-serif">{p.description}</p>
+            </div>
+
+            <div class="p-4 flex justify-end">
+              <a class="underline" href={p.prs}>
+                View PRs
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
   </section>
 
   <section class="my-10">
