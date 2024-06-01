@@ -184,6 +184,40 @@ const languageForks = [
       "https://github.com/microsoft/TypeScript/compare/main...frectonz:TypeScript:main",
   },
 ];
+
+const nixpkgs = [
+  {
+    name: "medium-to-markdown",
+    description: "A medium to markdown parser packaged for Nix.",
+    code: "https://github.com/frectonz/medium-to-markdown",
+  },
+  {
+    name: "dotree",
+    description: "The dotree command runner packaged for Nix.",
+    code: "https://github.com/frectonz/dotree",
+  },
+  {
+    name: "rescript-lsp",
+    description: "The ReScript Language Server packaged for Nix.",
+    code: "https://github.com/frectonz/rescript-lsp-nix",
+  },
+  {
+    name: "scope-tui",
+    description:
+      "A simple oscilloscope/vectorscope/spectroscope for your terminal packaged for Nix.",
+    code: "https://github.com/frectonz/scope-tui-nix",
+  },
+  {
+    name: "monaspace",
+    description: "The monaspace font from GitHub packaged for Nix.",
+    code: "https://github.com/frectonz/monaspace",
+  },
+  {
+    name: "Senamirmir Fonts",
+    description: "The Senamirmir ethiopic fonts packaged for Nix.",
+    code: "https://github.com/frectonz/senamirmir-nixified",
+  },
+];
 ---
 
 <Layout title="Frectonz">
@@ -298,8 +332,8 @@ const languageForks = [
   <section class="my-10">
     <h1 class="text-4xl font-serif mb-5 font-bold">Language Forks</h1>
     <p>
-      I also like forking the codebases of some popular programming languages an
-      changing the names of some keywords and adding some new operations to
+      I also like forking the codebases of some popular programming languages
+      and changing the names of some keywords and adding some new operations to
       them.
     </p>
     <div class="py-5 flex gap-5 overflow-x-auto">
@@ -318,8 +352,38 @@ const languageForks = [
               <a class="underline" href={l.code}>
                 Source
               </a>
-              <a class="underline" href={l.changes}>
-                See Changes
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="my-10">
+    <h1 class="text-4xl font-serif mb-5 font-bold">Packaging stuff for Nix</h1>
+    <p>
+      Nix is a build system designed with a strong emphasis on reproducibility.
+      It uses its own language, known as the Nix language, to define how
+      packages should be built. Because Nix is not widely known or used, many
+      developers don't create Nix build instructions for their projects. I enjoy
+      writing Nix build instructions for such projects to help improve their
+      build processes.
+    </p>
+    <div class="py-5 flex gap-5 overflow-x-auto">
+      {
+        nixpkgs.map((n) => (
+          <div class="min-w-[400px] w-[400px] flex flex-col border border-black box-shadow">
+            <div class="p-4">
+              <h1 class="font-serif text-xl font-bold">{n.name}</h1>
+            </div>
+
+            <div class="p-4 border-t border-black flex-grow">
+              <p class="font-serif">{n.description}</p>
+            </div>
+
+            <div class="p-4 flex gap-4 justify-end">
+              <a class="underline" href={n.code}>
+                Source
               </a>
             </div>
           </div>
