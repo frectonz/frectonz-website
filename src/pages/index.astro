@@ -145,6 +145,45 @@ const oss = [
     prs: "https://github.com/nate-sys/muc/pulls?q=is%3Apr+author%3Afrectonz",
   },
 ];
+
+const languageForks = [
+  {
+    name: "better-go",
+    description:
+      "The go compiler with a try, an unwrap and a new append statement.",
+    code: "https://github.com/frectonz/better-go",
+    changes: "https://github.com/frectonz/better-go/commits/second-try/",
+  },
+  {
+    name: "cpython",
+    description: "The python interpreter forked to rename some keywords.",
+    code: "https://github.com/frectonz/cpython",
+    changes:
+      "https://github.com/python/cpython/compare/main...frectonz:cpython:main",
+  },
+  {
+    name: "php-src",
+    description:
+      "The php interpreter forked to rename some keywords and remove the dollar sign.",
+    code: "https://github.com/frectonz/php-src",
+    changes:
+      "https://github.com/php/php-src/compare/master...frectonz:php-src:master",
+  },
+  {
+    name: "go",
+    description:
+      "The Go programming language with keywords renamed and this one supports ethiopic keywords.",
+    code: "https://github.com/frectonz/go",
+    changes: "https://github.com/frectonz/go/commits/bababooey/",
+  },
+  {
+    name: "TypeScript",
+    description: "The TypeScript with some new keywords.",
+    code: "https://github.com/frectonz/TypeScript",
+    changes:
+      "https://github.com/microsoft/TypeScript/compare/main...frectonz:TypeScript:main",
+  },
+];
 ---
 
 <Layout title="Frectonz">
@@ -248,6 +287,39 @@ const oss = [
             <div class="p-4 flex justify-end">
               <a class="underline" href={p.prs}>
                 View PRs
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="my-10">
+    <h1 class="text-4xl font-serif mb-5 font-bold">Language Forks</h1>
+    <p>
+      I also like forking the codebases of some popular programming languages an
+      changing the names of some keywords and adding some new operations to
+      them.
+    </p>
+    <div class="py-5 flex gap-5 overflow-x-auto">
+      {
+        languageForks.map((l) => (
+          <div class="min-w-[400px] w-[400px] flex flex-col border border-black box-shadow">
+            <div class="p-4">
+              <h1 class="font-serif text-xl font-bold">{l.name}</h1>
+            </div>
+
+            <div class="p-4 border-t border-black flex-grow">
+              <p class="font-serif">{l.description}</p>
+            </div>
+
+            <div class="p-4 flex gap-4 justify-end">
+              <a class="underline" href={l.code}>
+                Source
+              </a>
+              <a class="underline" href={l.changes}>
+                See Changes
               </a>
             </div>
           </div>
