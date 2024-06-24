@@ -21,6 +21,20 @@ const tags = {
 
 const projects = [
   {
+    name: "SQL Studio",
+    code: "https://github.com/frectonz/sql-studio",
+    url: "https://sql-studio.frectonz.io/",
+    description:
+      "SQL Database Explorer [SQLite, libSQL, PostgreSQL, MySQL/MariaDB, DuckDB]",
+    tags: [tags["rust"], tags["typescript"], tags["nix"]],
+  },
+  {
+    name: "murder_tool",
+    code: "https://github.com/frectonz/murder_tool/",
+    description: "Kill processes with a TUI",
+    tags: [tags["ocaml"], tags["nix"]],
+  },
+  {
     name: "ordo",
     code: "https://github.com/frectonz/ordo",
     url: "https://ordo.frectonz.io",
