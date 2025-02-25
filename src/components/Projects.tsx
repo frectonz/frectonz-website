@@ -23,7 +23,7 @@ const projects = [
   {
     name: "SQL Studio",
     code: "https://github.com/frectonz/sql-studio",
-    url: "https://sql-studio.frectonz.io/",
+    url: "https://sql-studio.frectonz.et/",
     description:
       "SQL Database Explorer [SQLite, libSQL, PostgreSQL, MySQL/MariaDB, DuckDB]",
     tags: [tags["rust"], tags["typescript"], tags["nix"]],
@@ -37,7 +37,6 @@ const projects = [
   {
     name: "ordo",
     code: "https://github.com/frectonz/ordo",
-    url: "https://ordo.frectonz.io",
     description: "Effortlessly set up and conduct ranked choice voting",
     tags: [tags["rust"], tags["nix"]],
   },
@@ -51,14 +50,14 @@ const projects = [
   {
     name: "Elm Dama",
     code: "https://github.com/frectonz/elm-dama",
-    url: "https://dama.frectonz.io/",
+    url: "https://dama.frectonz.et/",
     description: "Ethiopian dama game implemented in Elm.",
     tags: [tags["elm"], tags["nix"], tags["frontend"]],
   },
   {
     name: "of_base",
     code: "https://github.com/frectonz/of-base",
-    url: "https://of-base.frectonz.io",
+    url: "https://of-base.frectonz.et",
     description: "Base conversion app for learning rescript.",
     tags: [tags["rescript"], tags["nix"], tags["frontend"]],
   },
@@ -78,7 +77,7 @@ const projects = [
   {
     name: "e/acc card",
     code: "https://github.com/frectonz/e-acc-card",
-    url: "https://e-acc.frectonz.io/",
+    url: "https://e-acc.frectonz.et/",
     description:
       "A demo for using SVGs as templates to generate images in the browser.",
     tags: [tags["svelte"], tags["typescript"], tags["nix"], tags["frontend"]],
@@ -92,7 +91,7 @@ const projects = [
   {
     name: "The Hearts of OpenAi",
     code: "https://github.com/frectonz/the-hearts-of-openai",
-    url: "https://openai.frectonz.io/",
+    url: "https://openai.frectonz.et/",
     description:
       "Convert a string into a bunch of heart emojis ❤️🧡💛💚💙💜🖤🤍 OpenAi style.",
     tags: [tags["elm"], tags["nix"], tags["frontend"]],
@@ -136,7 +135,7 @@ const projects = [
   {
     name: "Super Tic-Tac-Toe",
     code: "https://github.com/frectonz/super-tic-tac-toe",
-    url: "https://tic-tac-toe.frectonz.io/",
+    url: "https://tic-tac-toe.frectonz.et/",
     description: "Super Tic-Tac-Toe implemented in Elm.",
     tags: [tags["elm"], tags["frontend"]],
   },
@@ -165,7 +164,7 @@ const projects = [
   {
     name: "Telegram Export Analyzer",
     code: "https://github.com/frectonz/telegram-export-analyzer",
-    url: "https://telegram.frectonz.io/",
+    url: "https://telegram.frectonz.et/",
     description:
       "An analysis tool that shows you different analytics from data exported from telegram groups.",
     tags: [tags["typescript"], tags["telegram"], tags["frontend"]],
@@ -173,14 +172,14 @@ const projects = [
   {
     name: "Wordle in Elm",
     code: "https://github.com/frectonz/wordle-elm",
-    url: "https://wordle.frectonz.io/",
+    url: "https://wordle.frectonz.et/",
     description: "A wordle clone implemented in Elm.",
     tags: [tags["elm"], tags["frontend"]],
   },
   {
     name: "MiniTab",
     code: "https://github.com/frectonz/minitab",
-    url: "https://mini-tab.frectonz.io/",
+    url: "https://mini-tab.frectonz.et/",
     description:
       "A beautiful website that shows the time and a random image from unsplash that you can use as a new tab page.",
     tags: [tags["elm"], tags["frontend"]],
@@ -188,14 +187,14 @@ const projects = [
   {
     name: "OXO",
     code: "https://github.com/frectonz/oxo",
-    url: "https://oxo.frectonz.io/",
+    url: "https://oxo.frectonz.et/",
     description: "A tic tac toe game implemented in Elm.",
     tags: [tags["elm"], tags["frontend"]],
   },
   {
     name: "Gundan",
     code: "https://github.com/frectonz/gundan",
-    url: "https://boids.frectonz.io/",
+    url: "https://boids.frectonz.et/",
     description: "A boid simulation program.",
     tags: [tags["typescript"], tags["animation"]],
   },
