@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What's Your Philosophy? Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'IBM Plex Mono', monospace;
+            background-color: #fef3c7; /* amber-100 */
+            background-image:
+                linear-gradient(rgba(28, 25, 23, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(28, 25, 23, 0.1) 1px, transparent 1px);
+            background-size: 25px 25px;
+        }
+        .neo-shadow {
+            box-shadow: 5px 5px 0px #1e293b;
+        }
+        .answer-btn {
+            transition: all 0.1s ease-in-out;
+        }
+        .answer-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0px #1e293b;
+        }
+        .answer-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 3px 3px 0px #1e293b;
+        }
+        .result-card {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="text-slate-800 flex items-center justify-center min-h-screen p-4">
+
+    <div id="quiz-container" class="bg-white w-full max-w-2xl mx-auto border-2 border-slate-900 neo-shadow p-6 md:p-10">
+
+        <!-- Initial State -->
+        <div id="start-screen">
+            <h1 class="text-3xl md:text-4xl font-bold text-center mb-4 text-slate-900 uppercase">What's Your World Philosophy?</h1>
+            <p class="text-center text-slate-600 mb-8">Do we progress by adding or by taking away? Answer a few questions to find out which of the four philosophies you lean towards.</p>
+            <div class="flex justify-center">
+                <button onclick="startQuiz()" class="bg-lime-400 text-slate-900 font-bold py-3 px-8 hover:bg-lime-500 transition-colors border-2 border-slate-900 neo-shadow">Start Quiz</button>
+            </div>
+        </div>
+
+        <!-- Quiz State -->
+        <div id="quiz-screen" class="hidden">
+            <!-- Progress Bar -->
+            <div class="w-full bg-slate-200 h-4 mb-6 border-2 border-slate-900">
+                <div id="progress-bar" class="bg-indigo-600 h-full" style="width: 0%"></div>
+            </div>
+
+            <!-- Question -->
+            <h2 id="question-text" class="text-2xl font-semibold text-center mb-8 min-h-[96px] flex items-center justify-center"></h2>
+
+            <!-- Answers -->
+            <div id="answer-buttons" class="grid grid-cols-1 gap-4">
+                <button data-score="2" class="answer-btn bg-lime-400 text-slate-900 font-semibold py-3 px-5 border-2 border-slate-900 neo-shadow">Strongly Agree</button>
+                <button data-score="1" class="answer-btn bg-lime-300 text-slate-900 font-semibold py-3 px-5 border-2 border-slate-900 neo-shadow">Agree</button>
+                <button data-score="0" class="answer-btn bg-slate-300 text-slate-900 font-semibold py-3 px-5 border-2 border-slate-900 neo-shadow">Neutral</button>
+                <button data-score="-1" class="answer-btn bg-rose-300 text-slate-900 font-semibold py-3 px-5 border-2 border-slate-900 neo-shadow">Disagree</button>
+                <button data-score="-2" class="answer-btn bg-rose-400 text-slate-900 font-semibold py-3 px-5 border-2 border-slate-900 neo-shadow">Strongly Disagree</button>
+            </div>
+        </div>
+
+        <!-- Result State -->
+        <div id="result-screen" class="hidden text-center">
+            <div id="result-content" class="result-card">
+                <p class="text-slate-600 mb-2">You are likely...</p>
+                <h1 id="result-title" class="text-4xl font-bold mb-4 uppercase"></h1>
+                <p id="result-motto" class="text-lg italic text-slate-500 mb-6"></p>
+                <p id="result-description" class="text-slate-700 mb-8"></p>
+                <button onclick="retakeQuiz()" class="bg-lime-400 text-slate-900 font-bold py-3 px-8 hover:bg-lime-500 transition-colors border-2 border-slate-900 neo-shadow">Retake Quiz</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const startScreen = document.getElementById('start-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+
+        const questionText = document.getElementById('question-text');
+        const answerButtonsContainer = document.getElementById('answer-buttons');
+        const progressBar = document.getElementById('progress-bar');
+        
+        const resultTitle = document.getElementById('result-title');
+        const resultMotto = document.getElementById('result-motto');
+        const resultDescription = document.getElementById('result-description');
+
+        // Questions are structured with text and the quadrant they primarily test
+        const questions = [
+            { text: "A home feels more comfortable and welcoming when it's full of books, art, and personal collections.", type: 'proPro' },
+            { text: "My digital life would improve if I deleted old files and unsubscribed from most newsletters.", type: 'proAnti' },
+            { text: "Constant notifications and new apps create more anxiety than they solve problems.", type: 'antiPro' },
+            { text: "Preserving old buildings, even if they're inefficient, is crucial for a society's identity.", type: 'antiAnti' },
+            { text: "The best products are the ones with the most features and customization options.", type: 'proPro' },
+            { text: "A simple, minimalist wardrobe makes getting dressed easier and less stressful.", type: 'proAnti' },
+            { text: "I feel nostalgic for a time before smartphones and constant internet connectivity.", type: 'antiPro' },
+            { text: "It's a mistake to discard old traditions and ceremonies in the name of 'progress'.", type: 'antiAnti' },
+            { text: "Technological advancement is the most reliable path to improving the human condition.", type: 'proPro' },
+            { text: "I often feel a sense of relief after a major decluttering of my living space.", type: 'proAnti' },
+            { text: "Uncontrolled consumerism is a primary cause of the world's environmental problems.", type: 'antiPro' },
+            { text: "We lose something valuable when we stop teaching cursive writing in schools.", type: 'antiAnti' }
+        ];
+
+        let currentQuestionIndex = 0;
+        let scores = {
+            proPro: 0,
+            proAnti: 0,
+            antiPro: 0,
+            antiAnti: 0
+        };
+
+        const resultData = {
+            proPro: {
+                title: "The Maximalist",
+                motto: "The world improves when we add more stuff.",
+                description: "You believe that progress and happiness come from creation, invention, and abundance. To you, 'stuff' isn't junk; it's a rich tapestry of experience, knowledge, technology, and beauty. You thrive in environments filled with stimulus and possibilities, seeing every new addition as an opportunity for growth and enrichment. You think a better world is built, not cleared."
+            },
+            proAnti: {
+                title: "The Minimalist",
+                motto: "The world improves when we remove more stuff.",
+                description: "You find clarity and peace by simplifying. You believe that by removing unnecessary possessions, distractions, and commitments, we can focus on what's truly essential. For you, a better world is one with less clutter, less waste, and less noise. True happiness isn't found in having more, but in needing less and living intentionally."
+            },
+            antiPro: {
+                title: "The Overwhelmed Luddite",
+                motto: "The world worsens when we add more stuff.",
+                description: "You feel that the relentless pace of 'progress' is a source of anxiety and disconnection. You see the constant addition of new gadgets, social media platforms, and consumer goods as a detriment to our well-being and the planet. You believe that true value lies in genuine human connection and a simpler way of life, which is being eroded by modern excess."
+            },
+            antiAnti: {
+                title: "The Curator",
+                motto: "The world worsens when we remove more stuff.",
+                description: "You are a guardian of the past and a preserver of tradition. You believe our history, culture, and knowledge are our greatest assets. In your view, removing these things—be it old books, languages, traditions, or buildings—is not simplification, but an erasure of our collective identity. You understand that a world that forgets its past is a poorer, more fragile world."
+            }
+        };
+
+        function startQuiz() {
+            startScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            currentQuestionIndex = 0;
+            scores = { proPro: 0, proAnti: 0, antiPro: 0, antiAnti: 0 };
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const question = questions[currentQuestionIndex];
+            questionText.textContent = question.text;
+            
+            // Update progress bar
+            const progress = ((currentQuestionIndex) / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        answerButtonsContainer.addEventListener('click', (event) => {
+            if (event.target.tagName === 'BUTTON') {
+                const score = parseInt(event.target.dataset.score);
+                const questionType = questions[currentQuestionIndex].type;
+
+                // This scoring logic adds points to the question's type for positive scores,
+                // and to the opposing quadrant for negative scores.
+                if (score > 0) {
+                    scores[questionType] += score;
+                } else if (score < 0) {
+                    switch(questionType) {
+                        case 'proPro': scores.antiPro += Math.abs(score); break;
+                        case 'proAnti': scores.antiAnti += Math.abs(score); break;
+                        case 'antiPro': scores.proPro += Math.abs(score); break;
+                        case 'antiAnti': scores.proAnti += Math.abs(score); break;
+                    }
+                }
+
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
+                    showQuestion();
+                } else {
+                    showResult();
+                }
+            }
+        });
+
+        function showResult() {
+            quizScreen.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+
+            let maxScore = -1;
+            let resultKey = 'proPro';
+            for (const key in scores) {
+                if (scores[key] > maxScore) {
+                    maxScore = scores[key];
+                    resultKey = key;
+                }
+            }
+            
+            const finalResult = resultData[resultKey];
+            resultTitle.textContent = finalResult.title;
+            resultMotto.textContent = `"${finalResult.motto}"`;
+            resultDescription.textContent = finalResult.description;
+        }
+
+        function retakeQuiz() {
+            resultScreen.classList.add('hidden');
+            startScreen.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
+
+
