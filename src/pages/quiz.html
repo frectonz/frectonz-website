@@ -79,15 +79,26 @@
                 <p id="result-motto" class="text-lg italic text-slate-500 mb-6"></p>
                 <p id="result-description" class="text-slate-700 mb-8"></p>
                 <button onclick="retakeQuiz()" class="bg-lime-400 text-slate-900 font-bold py-3 px-8 hover:bg-lime-500 transition-colors border-2 border-slate-900 neo-shadow">Retake Quiz</button>
+                <button onclick="showReview()" class="bg-slate-200 text-slate-900 font-medium py-3 px-8 border-2 border-slate-900 neo-shadow hover:bg-slate-300 transition-colors">Review</button>
             </div>
         </div>
 
+        <!-- Review State -->
+        <div id="review-screen" class="hidden">
+            <h2 class="text-2xl font-bold text-center mb-6">Your Answers</h2>
+            <div id="review-list" class="space-y-4 mb-8"></div>
+            <div class="flex justify-center gap-4">
+                <button onclick="showResult()" class="bg-slate-300 text-slate-900 font-semibold py-2 px-6 border-2 border-slate-900 neo-shadow">Back</button>
+                <button onclick="retakeQuiz()" class="bg-lime-400 text-slate-900 font-bold py-2 px-6 border-2 border-slate-900 neo-shadow">Retake</button>
+            </div>
+        </div>
     </div>
 
     <script>
         const startScreen = document.getElementById('start-screen');
         const quizScreen = document.getElementById('quiz-screen');
         const resultScreen = document.getElementById('result-screen');
+        const reviewScreen = document.getElementById('review-screen');
 
         const questionText = document.getElementById('question-text');
         const answerButtonsContainer = document.getElementById('answer-buttons');
@@ -121,6 +132,8 @@
             antiAnti: 0
         };
 
+        let answers = [];
+
         const resultData = {
             proPro: {
                 title: "The Maximalist",
@@ -145,6 +158,9 @@
         };
 
         function startQuiz() {
+            // clear out old answers
+            answers = [];
+
             startScreen.classList.add('hidden');
             quizScreen.classList.remove('hidden');
             currentQuestionIndex = 0;
@@ -165,6 +181,9 @@
             if (event.target.tagName === 'BUTTON') {
                 const score = parseInt(event.target.dataset.score);
                 const questionType = questions[currentQuestionIndex].type;
+
+                // Record the answers
+                answers.push(event.target.innerHTML);
 
                 // This scoring logic adds points to the question's type for positive scores,
                 // and to the opposing quadrant for negative scores.
@@ -191,6 +210,7 @@
         function showResult() {
             quizScreen.classList.add('hidden');
             resultScreen.classList.remove('hidden');
+            reviewScreen.classList.add('hidden');
 
             let maxScore = -1;
             let resultKey = 'proPro';
@@ -210,6 +230,25 @@
         function retakeQuiz() {
             resultScreen.classList.add('hidden');
             startScreen.classList.remove('hidden');
+            reviewScreen.classList.add('hidden');
+        }
+
+        function showReview() {
+            resultScreen.classList.add('hidden');
+            reviewScreen.classList.remove('hidden');
+
+            const reviewList = document.getElementById('review-list');
+            reviewList.innerHTML = ''; // clear old content
+
+            questions.forEach((q, i) => {
+                const item = document.createElement('div');
+                item.className = "border-2 border-slate-900 p-4 bg-white neo-shadow";
+                item.innerHTML = `
+                    <p class="font-semibold mb-2">${i + 1}. ${q.text}</p>
+                    <p class="text-slate-600 italic">Your answer: ${answers[i] || '—'}</p>
+                `;
+                reviewList.appendChild(item);
+            });
         }
     </script>
 </body>
