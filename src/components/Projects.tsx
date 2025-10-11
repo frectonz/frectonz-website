@@ -17,6 +17,12 @@ const tags = {
   telegram: "Telegram",
   animation: "Animation",
   terminal: "Terminal",
+  database: "Database",
+  elixir: "Elixir",
+  phoenix: "Phoenix",
+  idris: "Idris",
+  kotlin: "Kotlin",
+  aws: "AWS",
 };
 
 const projects = [
@@ -27,6 +33,115 @@ const projects = [
     description:
       "SQL Database Explorer [SQLite, libSQL, PostgreSQL, MySQL/MariaDB, DuckDB]",
     tags: [tags["rust"], tags["typescript"], tags["nix"]],
+  },
+  {
+    name: "pglite-fusion",
+    code: "https://github.com/frectonz/pglite-fusion",
+    description:
+      "Embed an SQLite database in your PostgreSQL table. AKA multitenancy has been solved.",
+    tags: [tags["rust"], tags["nix"], tags["database"]],
+  },
+  {
+    name: "pg-when",
+    code: "https://github.com/frectonz/pg-when",
+    description: "Just say when.",
+    tags: [tags["rust"], tags["database"]],
+  },
+  {
+    name: "parenv",
+    code: "https://github.com/frectonz/parenv",
+    description:
+      "Environment variable parser with a clap style derive macro and elm style error reporting.",
+    tags: [tags["rust"]],
+  },
+  {
+    name: "LC3",
+    code: "https://github.com/frectonz/lc3",
+    description: "Observable LC3 Virtual Machine",
+    tags: [tags["ocaml"]],
+  },
+  {
+    name: "LC3 Disassembler",
+    code: "https://github.com/frectonz/lc3-idris",
+    description: "LC3 Disassembler in Idris",
+    tags: [tags["idris"]],
+  },
+  {
+    name: "media.nix",
+    code: "https://github.com/frectonz/media.nix",
+    description: "Home Media Server",
+    tags: [tags["nix"]],
+  },
+  {
+    name: "DevShopsEt",
+    url: "https://devshopset.onrender.com",
+    code: "https://github.com/frectonz/devshops-et",
+    description: "A Catalog of Ethiopian Software Companies.",
+    tags: [tags["elixir"], tags["phoenix"]],
+  },
+  {
+    name: "Better Auth Fayda",
+    code: "https://github.com/frectonz/fayda",
+    description: "Better Auth plugin for Fayda.",
+    tags: [tags["typescript"]],
+  },
+  {
+    name: "schemy",
+    code: "https://github.com/frectonz/schemy",
+    description:
+      "Generates Rust and TypeScript types from Schema.org JSON-LD vocabulary.",
+    tags: [tags["rust"], tags["typescript"]],
+  },
+  {
+    name: "octopod",
+    code: "https://github.com/frectonz/octopod",
+    description: "A UI for Docker Registries",
+    tags: [tags["elm"], tags["rust"], tags["nix"]],
+  },
+  {
+    name: "leader-tab",
+    code: "https://github.com/frectonz/leader-tab",
+    description:
+      "An algorithm for selecting a leader from all the open tabs of a website.",
+    tags: [tags["typescript"]],
+  },
+  {
+    name: "vitrum",
+    url: "https://vitrum.frectonz.et/",
+    code: "https://github.com/frectonz/vitrum",
+    description: "Multi window floating partcles animation",
+    tags: [tags["typescript"]],
+  },
+  {
+    name: "Crazy Gear",
+    code: "https://github.com/frectonz/CrazyGear",
+    description: "Amazing Gear clone vibe coded with Gemini 2.5 Pro.",
+    tags: [tags["kotlin"]],
+  },
+  {
+    name: "route53-exporter",
+    code: "https://github.com/frectonz/route53-exporter",
+    description: "A program that exports hosted zone data into a JSON file.",
+    tags: [tags["rust"], tags["aws"]],
+  },
+  {
+    name: "pg-ethopic",
+    code: "https://github.com/frectonz/pg-ethopic",
+    description:
+      "A PostgreSQL extension for formatting Ethiopic dates and numbers.",
+    tags: [tags["rust"], tags["database"]],
+  },
+  {
+    name: "Jabroni",
+    code: "https://github.com/frectonz/jabroni",
+    description: "Query your SQLite DB over WebSockets",
+    tags: [tags["rust"], tags["database"]],
+  },
+  {
+    name: "lobste-rs",
+    code: "https://github.com/frectonz/lobste-rs",
+    description: "A CLI client for lobste.rs written in Rust.",
+    tags: [tags["rust"]],
   },
   {
     name: "murder_tool",
@@ -214,7 +329,7 @@ export default function Projects() {
   };
 
   return (
-    <main className="mb-5">
+    <section className="mb-5">
       <div className="flex flex-wrap gap-2 items-center">
         {selectedTags.length !== 0 && (
           <span className="mr-2">Showing Projects with</span>
@@ -258,9 +373,9 @@ export default function Projects() {
                 ))}
               </div>
 
-              <main className="p-4 flex-grow">
+              <div className="p-4 flex-grow">
                 <p>{project.description}</p>
-              </main>
+              </div>
               <footer className="px-4 pb-4 flex gap-4 justify-end">
                 <a href={project.code} className="underline">
                   Source
@@ -274,6 +389,6 @@ export default function Projects() {
             </article>
           ))}
       </section>
-    </main>
+    </section>
   );
 }
