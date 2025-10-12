@@ -270,6 +270,21 @@ const nixpkgs = [
     code: "https://github.com/frectonz/senamirmir-nixified",
   },
 ];
+
+const talks = [
+  {
+    name: "Why Niche Tech Deserves a Place in Your Toolkit",
+    event: "DevFest Addis 2024",
+    slides:
+      "https://docs.google.com/presentation/d/15cApRL_VOkxoKnRpKlX0L1QxFMdFytQS3YfQs3E5lrU/",
+  },
+  {
+    name: "The Case for Open Source Companies",
+    event: "Better Hack 2024",
+    slides:
+      "https://www.canva.com/design/DAG0r9eN8Ig/CZzGjiG-Yg-S5FWhaYU0kA/edit",
+  },
+];
 ---
 
 <Layout title="Frectonz">
@@ -432,6 +447,38 @@ const nixpkgs = [
             <div class="p-4 flex gap-4 justify-end">
               <a class="underline" href={n.code}>
                 Source
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="my-10">
+    <h1 class="text-4xl font-serif mb-5 font-bold">Talks</h1>
+    <p>Talks and presentations I've given.</p>
+
+    <div class="py-5 flex gap-5 overflow-x-auto">
+      {
+        talks.map((t) => (
+          <div class="min-w-[400px] w-[400px] flex flex-col border border-black box-shadow">
+            <div class="p-4">
+              <h1 class="font-serif text-xl font-bold">{t.name}</h1>
+            </div>
+
+            <div class="p-4 border-t border-black flex-grow">
+              <p class="font-serif">{t.event}</p>
+            </div>
+
+            <div class="p-4 flex gap-4 justify-end">
+              <a
+                class="underline"
+                href={t.slides}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Slides
               </a>
             </div>
           </div>
